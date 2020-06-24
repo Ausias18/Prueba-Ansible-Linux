@@ -11,8 +11,8 @@
       state: latest 
   - name: write the apache config file 
     template: 
-      src: Prueba-Ansible-Linux/ -------
-      dest: /etc/httpd.conf 
+      src: files/index.html
+      dest: /etc/index.html 
     notify: 
     - restart apache 
   - name: ensure apache is running 
