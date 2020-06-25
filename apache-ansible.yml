@@ -27,10 +27,10 @@
    #   shell: /usr/sbin/a2ensite {{ http_conf }}
    #   notify: Reload Apache
 
-   # - name: Disable default Apache site
-   #   shell: /usr/sbin/a2dissite 000-default.conf
-   #   when: disable_default
-   #   notify: Reload Apache
+    - name: Disable default Apache site
+      shell: /usr/sbin/a2dissite 000-default.conf
+      when: disable_default
+      notify: Reload Apache
 
     - name: "UFW - Allow HTTP on port 80"
       ufw:
