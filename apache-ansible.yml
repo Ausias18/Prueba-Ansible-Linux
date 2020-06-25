@@ -18,7 +18,7 @@
     become: true
 
   - name: Install python
-    apt: name="python{{ python_version }}-dev" state=present
+    apt: name="python2.7-dev" state=present
     become: true
   - name: ensure apache is at the latest version 
     yum: 
