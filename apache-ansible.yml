@@ -7,8 +7,8 @@
   tasks: 
   - name: Check if python is at 2.7
     command: python2.7 --version
-      register: python_version_result
-      failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+    register: python_version_result
+    failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
 
   - name: Install prerequisites
     apt: name=python-software-properties state=present
