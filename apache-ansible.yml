@@ -10,16 +10,17 @@
     register: python_version_result
 
   - name: Install prerequisites
-    apt: name=python-software-properties state=present
+    yum: name=python-software-properties state=present
     become: true
 
   - name: Add deadsnakes repo
-    apt_repository: repo="ppa:deadsnakes/ppa"
+    yum_repository: repo="ppa:deadsnakes/ppa"
     become: true
 
   - name: Install python
-    apt: name="python2.7-dev" state=present
+    yum: name="python2.7-dev" state=present
     become: true
+    
   - name: ensure apache is at the latest version 
     yum: 
       name: httpd 
