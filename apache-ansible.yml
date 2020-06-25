@@ -18,24 +18,24 @@
         src: "files/index.html"
         dest: "/var/www/index.html"
 
-    - name: Set up Apache virtuahHost
-      template:
-        src: "files/apache.conf.j2"
-        dest: "/etc/apache2/sites-available/{{ http_conf }}"
+   # - name: Set up Apache virtuahHost
+   #   template:
+   #     src: "files/apache.conf.j2"
+   #     dest: "/etc/apache2/sites-available/{{ http_conf }}"
 
-    - name: Enable new site
-      shell: /usr/sbin/a2ensite {{ http_conf }}
-      notify: Reload Apache
+   # - name: Enable new site
+   #   shell: /usr/sbin/a2ensite {{ http_conf }}
+   #   notify: Reload Apache
 
-    - name: Disable default Apache site
-      shell: /usr/sbin/a2dissite 000-default.conf
-      when: disable_default
-      notify: Reload Apache
+   # - name: Disable default Apache site
+   #   shell: /usr/sbin/a2dissite 000-default.conf
+   #   when: disable_default
+   #   notify: Reload Apache
 
-    - name: "UFW - Allow HTTP on port {{ http_port }}"
+    - name: "UFW - Allow HTTP on port 80"
       ufw:
         rule: allow
-        port: "{{ http_port }}"
+        port: "80"
         proto: tcp
 
   handlers:
