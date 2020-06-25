@@ -19,7 +19,7 @@
     service: 
       name: httpd 
       state: started 
-    - name: Open port 80 for http access
+  - name: Open port 80 for http access
     firewalld:
       service: http
       permanent: true
