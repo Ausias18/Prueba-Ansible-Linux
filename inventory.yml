@@ -5,4 +5,4 @@ santalucia-azurerm-resource.westeurope.cloudapp.azure.com
 ansible_connection=ssh
 ansible_ssh_user=arqsis
 ansible_ssh_pass=Password1234!
-host_key_checking = false
+ansible_python_interpreter=/usr/bin/python2.7
