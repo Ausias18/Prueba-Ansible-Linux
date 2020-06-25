@@ -5,6 +5,22 @@
     max_clients: 200 
   remote_user: root 
   tasks: 
+  - name: Check if python is at 2.7
+  command: python2.7 --version
+  register: python_version_result
+  failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+
+- name: Install prerequisites
+  apt: name=python-software-properties state=present
+  become: true
+
+- name: Add deadsnakes repo
+  apt_repository: repo="ppa:deadsnakes/ppa"
+  become: true
+
+- name: Install python
+  apt: name="python{{ python_version }}-dev" state=present
+  become: true
   - name: ensure apache is at the latest version 
     yum: 
       name: httpd 
